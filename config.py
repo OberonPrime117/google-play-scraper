@@ -3,7 +3,7 @@ from flask import Flask , request , jsonify
 
 app = Flask(__name__)
 
-@app.route('/api',method=['GET'])
+@app.route('/api',methods=['GET'])
 def work():
     d = {}
     package = input("Enter the package name : ")
