@@ -1,14 +1,13 @@
-from google_play_scraper import app
+from google_play_scraper import app as app2
 from flask import Flask , request , jsonify
 
 app = Flask(__name__)
 
 @app.route('/api',methods=['GET'])
-def work():
+def hello_world():
     d = {}
-    package = input("Enter the package name : ")
     a = str(request.args['Query'])
-    result = app(
+    result = app2(
         a,
         lang='en', # defaults to 'en'
         country='us' # defaults to 'us'
