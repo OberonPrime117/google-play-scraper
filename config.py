@@ -1,9 +1,19 @@
 from google_play_scraper import app
-package = input("Enter the package name : ")
-result = app(
-    package,
-    lang='en', # defaults to 'en'
-    country='us' # defaults to 'us'
-)
+from flask import Flask , request
 
-print(result['score'])
+app = Flask(__name__)
+
+@app.route('/api',method=['GET'])
+def work():
+    d = {}
+    package = input("Enter the package name : ")
+    d['Query'] = str(request.args['Query'])
+    result = app(
+        d['Query'],
+        lang='en', # defaults to 'en'
+        country='us' # defaults to 'us'
+    )
+    print(result['score'])
+
+if __name__ == '__main__':
+    app.run()
