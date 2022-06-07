@@ -1,5 +1,5 @@
 from google_play_scraper import app
-from flask import Flask , request
+from flask import Flask , request , jsonify
 
 app = Flask(__name__)
 
@@ -7,13 +7,14 @@ app = Flask(__name__)
 def work():
     d = {}
     package = input("Enter the package name : ")
-    d['Query'] = str(request.args['Query'])
+    a = str(request.args['Query'])
     result = app(
-        d['Query'],
+        a,
         lang='en', # defaults to 'en'
         country='us' # defaults to 'us'
     )
-    print(result['score'])
+    d['Query'] = result['score']
+    return jsonify(d)
 
 if __name__ == '__main__':
     app.run()
