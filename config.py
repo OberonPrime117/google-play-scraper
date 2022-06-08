@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/api',methods=['GET'])
 def hello_world():
-    a = str(request.args['Query'])
+    a = str(request.args['query'])
     result = app2(
         a,
         lang='en', # defaults to 'en'
