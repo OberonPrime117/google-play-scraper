@@ -5,15 +5,15 @@ app = Flask(__name__)
 
 @app.route('/api',methods=['GET'])
 def hello_world():
-    a = str(request.args['query'])
+    d = {}
+    a = str(request.args['Query'])
     result = app2(
         a,
         lang='en', # defaults to 'en'
         country='us' # defaults to 'us'
     )
-    result.headers.add('Access-Control-Allow-Origin', '*')
-    value = int(result['score'])
-    return value
+    d['Query'] = result['score']
+    return jsonify(d)
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000)
